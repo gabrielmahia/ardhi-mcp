@@ -1,0 +1,59 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/1.0.0/server.json",
+  "name": "ardhi-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Kenya land administration \u2014 title search, land rates, subdivision process, land disputes, and National Land Commission guidance. 5 tools.",
+  "license": "MIT",
+  "author": {
+    "name": "Gabriel Mahia",
+    "email": "contact@aikungfu.dev",
+    "url": "https://gabrielmahia.github.io"
+  },
+  "tools": [
+    {
+      "name": "title_search_guide",
+      "description": "Guide to searching land titles at Kenya Land Registry. Returns process steps, costs, and required documents.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "land_rates_query",
+      "description": "Query land rates and rent for Kenya counties. Returns rate calculation basis and payment channels.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "subdivision_process",
+      "description": "Step-by-step subdivision application process for Kenya land parcels.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "land_dispute_paths",
+      "description": "Dispute resolution pathways for Kenya land: NLC, ELC, traditional mediation. Returns eligibility and steps.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "land_rights_query",
+      "description": "Query land rights under Kenya Constitution 2010 and Land Act 2012.",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    }
+  ]
+}
