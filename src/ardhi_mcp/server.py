@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Optional
 from fastmcp import FastMCP
 
-mcp = FastMCP(name="ardhi-mcp", description="Kenya land administration tools. DEMO data only.")
+mcp = FastMCP(name="ardhi-mcp", instructions="Kenya land administration tools. DEMO data only.")
 
 @mcp.tool(name="title_search_guide", description="Guide to searching land titles at Kenya Land Registry. DEMO.")
 def title_search_guide(county: Optional[str] = None, parcel_number: Optional[str] = None) -> dict:
