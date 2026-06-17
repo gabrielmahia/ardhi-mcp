@@ -1,0 +1,14 @@
+# Smithery configuration for ardhi-mcp
+# East Africa AI Coordination Infrastructure — AI-KungFU
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties: {}
+    required: []
+  commandFunction: |-
+    (config) => ({
+      command: "ardhi-mcp",
+      args: [],
+      env: {}
+    })
