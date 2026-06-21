@@ -2,6 +2,7 @@
 from __future__ import annotations
 from typing import Annotated, Optional
 from fastmcp import FastMCP
+from pydantic import Field
 
 mcp = FastMCP(name="ardhi-mcp", instructions="Kenya land administration tools. DEMO data only.")
 
