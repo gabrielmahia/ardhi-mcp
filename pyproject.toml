@@ -22,3 +22,4 @@ ardhi-mcp = "ardhi_mcp.server:mcp.run"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+# build: 1782218502
