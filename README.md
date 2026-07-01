@@ -3,6 +3,14 @@
 [![ardhi-mcp Glama score](https://glama.ai/mcp/servers/gabrielmahia/ardhi-mcp/badges/score.svg)](https://glama.ai/mcp/servers/gabrielmahia/ardhi-mcp)
 [![smithery badge](https://smithery.ai/badge/@gabrielmahia/ardhi-mcp)](https://smithery.ai/server/@gabrielmahia/ardhi-mcp)
 
+
+---
+**Compatible with `claude-sonnet-5`** (released 2026-06-30) — Anthropic's most agentic
+Sonnet yet. Runs multi-step tool chains end-to-end without stopping short.
+Install: `pip install ardhi-mcp` · Use with any MCP client.
+
+---
+
 MCP server for Kenya land administration — title search, land rates, subdivision process, land disputes, and National Land Commission guidance. 5 tools.
 
 ## Part of the East Africa Coordination Stack
