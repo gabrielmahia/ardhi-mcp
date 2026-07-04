@@ -88,3 +88,7 @@ def land_rights_query(topic: str) -> dict:
     return {"source": "DEMO — Kenya Land Act 2012, Constitution 2010 (kenyalaw.org)", "topic": topic,
             "rights": matched or {"general": "Review Land Act 2012 at kenyalaw.org"},
             "disclaimer": "Not legal advice. Consult an advocate or NLC."}
+
+def main() -> None:
+    """Console entry point."""
+    mcp.run()

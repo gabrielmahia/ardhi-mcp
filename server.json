@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.gabrielmahia/ardhi-mcp",
+  "description": "ardhi-mcp",
+  "repository": {
+    "url": "https://github.com/gabrielmahia/ardhi-mcp",
+    "source": "github"
+  },
+  "version": "0.1.3",
+  "packages": [
+    {
+      "registry_type": "pypi",
+      "identifier": "ardhi-mcp",
+      "version": "0.1.3",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
