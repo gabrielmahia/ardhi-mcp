@@ -9,7 +9,7 @@ description = "MCP server for Kenya land administration — title search, land r
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
-dependencies = ["fastmcp>=0.9", "pydantic>=2.0"]
+dependencies = ["fastmcp>=2.0.0", "pydantic>=2.0"]
 keywords = ["mcp","kenya","africa","east-africa","coordination-infrastructure"]
 classifiers = [
     "Development Status :: 4 - Beta",
