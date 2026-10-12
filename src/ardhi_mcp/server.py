@@ -1,13 +1,15 @@
 """ArdhiMCP — Kenya Land Administration Navigation (5 tools). All data DEMO."""
 from __future__ import annotations
+
 from typing import Annotated, Optional
+
 from fastmcp import FastMCP
 from pydantic import Field
 
 mcp = FastMCP(name="ardhi-mcp", instructions="Kenya land administration tools. DEMO data only.")
 
-@mcp.tool(name="title_search_guide", description="Guide to searching land titles at Kenya Land Registry. DEMO.", annotations={"readOnlyHint": True, "openWorldHint": False})
-def title_search_guide(county: Optional[str] = Field(None, description="Kenyan county where the land is registered, e.g. 'Kiambu', 'Nairobi'."), parcel_number: Optional[str] = Field(None, description="Land parcel or title deed number, e.g. 'KIAMBU/TOWNSHIP/1234'.")) -> dict:
+@mcp.tool(name="title_search_guide", description="Steps to run an official land title search in Kenya: the county land registry or ArdhiSasa, Form RL1, the fee, documents and what the result confirms. Use when someone is about to buy, sell or otherwise transact in land and needs to check the title first. county and parcel_number are only echoed back; the steps are the same everywhere. Returns the source label, county, parcel, numbered steps, documents needed, the ArdhiSasa portal and a reminder to search before any transaction. Static guide labelled DEMO: verify at lands.go.ke. Read-only; no side effects.", annotations={"readOnlyHint": True, "openWorldHint": False})
+def title_search_guide(county: str | None = Field(None, description="Kenyan county where the land is registered, e.g. 'Kiambu', 'Nairobi'."), parcel_number: str | None = Field(None, description="Land parcel or title deed number, e.g. 'KIAMBU/TOWNSHIP/1234'.")) -> dict:
     return {"source": "DEMO — lands.go.ke for official process", "county": county,
             "parcel": parcel_number,
             "steps": [
@@ -21,8 +23,8 @@ def title_search_guide(county: Optional[str] = Field(None, description="Kenyan c
             "ardhisasa": "ardhisasa.go.ke — online search available for some counties",
             "note": "Always conduct official search before any land transaction. DEMO — verify at lands.go.ke"}
 
-@mcp.tool(name="land_rates_query", description="Land rates and rent for Kenya counties. DEMO.", annotations={"readOnlyHint": True, "openWorldHint": False})
-def land_rates_query(county: str, land_use: Optional[str] = "residential") -> dict:
+@mcp.tool(name="land_rates_query", description="Indicative annual land rates in KES per square metre for a county and land use. Use when someone asks roughly what land rates they will pay. Only some counties are in the sample table; any other county gets a generic default and rate_basis says so. land_use of residential or commercial selects the rate; any other land use returns the residential rate. Returns the source label, county, land_use, rate_basis, rate_estimate, how to pay and a note that counties set rates annually. Indicative figures labelled DEMO: verify with the county lands office. Read-only; no side effects.", annotations={"readOnlyHint": True, "openWorldHint": False})
+def land_rates_query(county: Annotated[str, Field(description="County name such as Nairobi or Mombasa; counties not in the sample table get a generic default.")], land_use: Annotated[str | None, Field(description="residential (default) or commercial; anything else returns the residential rate.")] = "residential") -> dict:
     """Return land rates, valuation, and annual charge data for Kenya counties."""
     RATES = {
         "nairobi": {"residential": "KES 0.125–1.00 per m² per year (varies by zone)",
@@ -35,12 +37,12 @@ def land_rates_query(county: str, land_use: Optional[str] = "residential") -> di
     county_key = county.lower()
     rate_data = RATES.get(county_key, RATES["default"])
     return {"source": "DEMO — county land rates published in annual county budgets", "county": county,
-            "land_use": land_use, "rate_estimate": rate_data.get(land_use.lower(), rate_data["residential"]),
+            "land_use": land_use, "rate_basis": "county table" if county_key in RATES else "generic default", "rate_estimate": rate_data.get(land_use.lower(), rate_data["residential"]),
             "payment": "Pay at county revenue offices or via county eCitizen portal",
             "note": "Rates set by county government annually. Verify at your county lands office."}
 
-@mcp.tool(name="subdivision_process", description="Land subdivision application process in Kenya. DEMO.", annotations={"readOnlyHint": True, "openWorldHint": False})
-def subdivision_process(county: Optional[str] = Field(None, description="Optional filter for county. Pass None to return all results."), purpose: Optional[str] = Field(None, description="Optional filter for purpose. Pass None to return all results.")) -> dict:
+@mcp.tool(name="subdivision_process", description="Steps, typical fees and timeline to subdivide land in Kenya: survey, physical planning approval, documents, technical committee approval and new titles. Use when someone plans to subdivide a parcel. county and purpose are accepted but do not change the result. Returns the source label, numbered steps, typical fees (survey, physical planning, registration), a timeline of 3 to 12 months and a note on agricultural land consent. Indicative figures labelled DEMO: confirm with the county. Read-only; no side effects.", annotations={"readOnlyHint": True, "openWorldHint": False})
+def subdivision_process(county: str | None = Field(None, description="Optional filter for county. Pass None to return all results."), purpose: str | None = Field(None, description="Optional filter for purpose. Pass None to return all results.")) -> dict:
     return {"source": "DEMO — lands.go.ke and county governments",
             "steps": [
                 "1. Survey: Engage licensed surveyor. Survey report + mutation form",
@@ -54,8 +56,8 @@ def subdivision_process(county: Optional[str] = Field(None, description="Optiona
             "timeline": "3–12 months depending on county and complexity",
             "note": "Agricultural land subdivision may require Ministry of Agriculture consent."}
 
-@mcp.tool(name="land_dispute_paths", description="Land dispute resolution pathways in Kenya. DEMO.", annotations={"readOnlyHint": True, "openWorldHint": False})
-def land_dispute_paths(dispute_type: str, county: Optional[str] = Field(None, description="Optional filter for county. Pass None to return all results.")) -> dict:
+@mcp.tool(name="land_dispute_paths", description="Routes to resolve a land dispute in Kenya for boundary, ownership, eviction or informal-tenure disputes, with the offices to approach in order (surveyor, land adjudication, National Land Commission, the Environment and Land Court, legal aid). Use when someone describes a land dispute and asks where to go. dispute_type selects the pathway; county is an optional filter label. Returns the resolution_pathway plus NLC, ELC and legal-aid details and a not-legal-advice disclaimer. Static guide labelled DEMO: consult an advocate. Read-only; no side effects.", annotations={"readOnlyHint": True, "openWorldHint": False})
+def land_dispute_paths(dispute_type: Annotated[str, Field(description="boundary, ownership, eviction or informal.")], county: str | None = Field(None, description="Optional filter for county. Pass None to return all results.")) -> dict:
     PATHS = {
         "boundary": ["Engage licensed surveyor for re-survey", "County Land Adjudication Officer", "Environment and Land Court (ELC)"],
         "ownership": ["National Land Commission (NLC) — historical injustices", "ELC for formal title disputes", "High Court"],
@@ -71,8 +73,8 @@ def land_dispute_paths(dispute_type: str, county: Optional[str] = Field(None, de
             "legal_aid": "NLAS free legal aid: nlas.go.ke",
             "disclaimer": "Not legal advice. Consult an advocate."}
 
-@mcp.tool(name="land_rights_query", description="Land rights under Kenya Constitution 2010 and Land Act 2012. DEMO.", annotations={"readOnlyHint": True, "openWorldHint": False})
-def land_rights_query(topic: str) -> dict:
+@mcp.tool(name="land_rights_query", description="Explain land rights in Kenya: ownership, community land, government land and adverse possession, with the legal basis. Use when someone asks what rights they have over land. Keywords in topic select entries; if none match it returns a pointer to the Land Act at kenyalaw.org. Returns the source label, topic, the rights and a not-legal-advice disclaimer. Static summary labelled DEMO: consult an advocate or the NLC. Read-only; no side effects.", annotations={"readOnlyHint": True, "openWorldHint": False})
+def land_rights_query(topic: Annotated[str, Field(description="Rights topic such as ownership, community_land, government_land or adverse_possession.")]) -> dict:
     """Return land ownership rights, women's land rights, and community land information."""
     RIGHTS = {
         "ownership": "Every Kenyan citizen has right to own land anywhere in Kenya (Art 40, Constitution 2010).",
