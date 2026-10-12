@@ -12,7 +12,7 @@
   "tools": [
     {
       "name": "title_search_guide",
-      "description": "Guide to searching land titles at Kenya Land Registry. DEMO.",
+      "description": "Steps to run an official land title search in Kenya: the county land registry or ArdhiSasa, Form RL1, the fee, documents and what the result confirms. Use when someone is about to buy, sell or otherwise transact in land and needs to check the title first. county and parcel_number are only echoed back; the steps are the same everywhere. Returns the source label, county, parcel, numbered steps, documents needed, the ArdhiSasa portal and a reminder to search before any transaction. Static guide labelled DEMO: verify at lands.go.ke. Read-only; no side effects.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -21,7 +21,7 @@
     },
     {
       "name": "land_rates_query",
-      "description": "Land rates and rent for Kenya counties. DEMO.",
+      "description": "Indicative annual land rates in KES per square metre for a county and land use. Use when someone asks roughly what land rates they will pay. Only some counties are in the sample table; any other county gets a generic default and rate_basis says so. land_use of residential or commercial selects the rate; any other land use returns the residential rate. Returns the source label, county, land_use, rate_basis, rate_estimate, how to pay and a note that counties set rates annually. Indicative figures labelled DEMO: verify with the county lands office. Read-only; no side effects.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -30,7 +30,7 @@
     },
     {
       "name": "subdivision_process",
-      "description": "Land subdivision application process in Kenya. DEMO.",
+      "description": "Steps, typical fees and timeline to subdivide land in Kenya: survey, physical planning approval, documents, technical committee approval and new titles. Use when someone plans to subdivide a parcel. county and purpose are accepted but do not change the result. Returns the source label, numbered steps, typical fees (survey, physical planning, registration), a timeline of 3 to 12 months and a note on agricultural land consent. Indicative figures labelled DEMO: confirm with the county. Read-only; no side effects.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -39,7 +39,7 @@
     },
     {
       "name": "land_dispute_paths",
-      "description": "Land dispute resolution pathways in Kenya. DEMO.",
+      "description": "Routes to resolve a land dispute in Kenya for boundary, ownership, eviction or informal-tenure disputes, with the offices to approach in order (surveyor, land adjudication, National Land Commission, the Environment and Land Court, legal aid). Use when someone describes a land dispute and asks where to go. dispute_type selects the pathway; county is an optional filter label. Returns the resolution_pathway plus NLC, ELC and legal-aid details and a not-legal-advice disclaimer. Static guide labelled DEMO: consult an advocate. Read-only; no side effects.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
@@ -48,7 +48,7 @@
     },
     {
       "name": "land_rights_query",
-      "description": "Land rights under Kenya Constitution 2010 and Land Act 2012. DEMO.",
+      "description": "Explain land rights in Kenya: ownership, community land, government land and adverse possession, with the legal basis. Use when someone asks what rights they have over land. Keywords in topic select entries; if none match it returns a pointer to the Land Act at kenyalaw.org. Returns the source label, topic, the rights and a not-legal-advice disclaimer. Static summary labelled DEMO: consult an advocate or the NLC. Read-only; no side effects.",
       "annotations": {
         "readOnlyHint": true,
         "destructiveHint": false,
