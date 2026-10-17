@@ -1,17 +1,17 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "io.github.gabrielmahia/ardhi-mcp",
-  "description": "MCP server for land records and land-service coordination in Kenya (ardhi = land)",
+  "description": "Kenya land guides: title search steps, land rates, subdivision, disputes and rights. Sample data.",
   "repository": {
     "url": "https://github.com/gabrielmahia/ardhi-mcp",
     "source": "github"
   },
-  "version": "0.1.5",
+  "version": "0.1.6",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "ardhi-mcp",
-      "version": "0.1.5",
+      "version": "0.1.6",
       "transport": {
         "type": "stdio"
       }
