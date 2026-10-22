@@ -1,12 +1,20 @@
 """ArdhiMCP — Kenya Land Administration Navigation (5 tools). All data DEMO."""
 from __future__ import annotations
 
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as _pkg_version
 from typing import Annotated, Optional
 
 from fastmcp import FastMCP
 from pydantic import Field
 
-mcp = FastMCP(name="ardhi-mcp", instructions="Kenya land administration tools. DEMO data only.")
+try:
+    _VERSION = _pkg_version("ardhi-mcp")
+except PackageNotFoundError:  # a source tree that was never installed
+    _VERSION = "0+unknown"
+
+
+mcp = FastMCP(name="ardhi-mcp", instructions="Kenya land administration tools. DEMO data only.", version=_VERSION)
 
 @mcp.tool(name="title_search_guide", description="Steps to run an official land title search in Kenya: the county land registry or ArdhiSasa, Form RL1, the fee, documents and what the result confirms. Use when someone is about to buy, sell or otherwise transact in land and needs to check the title first. county and parcel_number are only echoed back; the steps are the same everywhere. Returns the source label, county, parcel, numbered steps, documents needed, the ArdhiSasa portal and a reminder to search before any transaction. Static guide labelled DEMO: verify at lands.go.ke. Read-only; no side effects.", annotations={"readOnlyHint": True, "openWorldHint": False})
 def title_search_guide(county: str | None = Field(None, description="Kenyan county where the land is registered, e.g. 'Kiambu', 'Nairobi'."), parcel_number: str | None = Field(None, description="Land parcel or title deed number, e.g. 'KIAMBU/TOWNSHIP/1234'.")) -> dict:
