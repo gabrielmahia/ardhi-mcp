@@ -4,17 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ardhi-mcp"
-version = "0.1.8"
+version = "0.1.9"
 description = "MCP server for Kenya land administration — title search, land rates, subdivision process, land disputes, and National Land Commission guidance. 5 tools."
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = ["fastmcp>=2.0.0", "pydantic>=2.0"]
 keywords = ["mcp","kenya","africa","east-africa","coordination-infrastructure"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
