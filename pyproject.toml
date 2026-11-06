@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ardhi-mcp"
-version = "0.1.9"
+version = "0.1.10"
 description = "MCP server for Kenya land administration — title search, land rates, subdivision process, land disputes, and National Land Commission guidance. 5 tools."
 readme = "README.md"
 license = "MIT"
@@ -26,6 +26,7 @@ license-files = ["LICENSE"]
 ardhi-mcp = "ardhi_mcp.server:mcp.run"
 
 [project.urls]
+Issues = "https://github.com/gabrielmahia/ardhi-mcp/issues"
 Homepage = "https://github.com/gabrielmahia/ardhi-mcp"
 Documentation = "https://github.com/gabrielmahia/nairobi-stack"
 "MCP Registry" = "https://registry.modelcontextprotocol.io"
