@@ -3,7 +3,7 @@ message: "If you use this software, please cite it as below."
 type: software
 title: "ardhi-mcp"
 abstract: "MCP server for Kenya land administration — title search, land rates, subdivision process, land disputes, and National Land Commission guidance. 5 tools."
-version: "0.1.10"
+version: "0.1.11"
 authors:
   - family-names: "Mahia"
     given-names: "Gabriel"
